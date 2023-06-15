@@ -1,0 +1,98 @@
+@import '../variables.scss';
+
+.header-container {
+    width: 100%;
+    height: 8vh;
+    background-color: $bg-color;
+    display: flex;
+    justify-content: center;
+}
+
+.header-context-container {
+    width: 128rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo img {
+    width: 160px;
+    height: 40px;
+}
+
+.logo {
+    cursor: pointer;
+}
+
+
+.header-navigation {
+   display: flex;
+}
+
+.header-links ul li,
+.authorization-buttons ul li {
+    display: inline-block;
+}
+
+.nav-link {
+    color: $white-color;
+    margin-right: 5rem;
+    transition: 0.2s ease;
+    font-weight: 400;
+    font-size: 2rem;
+}
+
+.nav-link:hover {
+    color: $blue-color;
+    border-bottom: 2px solid $blue-color;
+    padding-bottom: 1rem;
+}
+
+.nav-link.active {
+    color: $blue-color;
+    border-bottom: 2px solid $blue-color;
+    padding-bottom: 1rem;
+}
+
+.authorization-buttons {
+    font-weight: bold;
+    right: 0;
+}
+
+.login-link {
+    color: $blue-color;
+    font-size: 2rem;
+    padding: 0.7rem;
+    border: 1px solid $blue-color;
+    padding: 0.7rem 4.7rem;
+    margin-right: 2rem;
+    border-radius: 1rem;
+    transition: 0.5s ease;
+    box-shadow: 0 0 1rem $blue-color;
+}
+
+.login-link:hover,
+.login-link.active {
+    color: white;
+    background-color: $blue-color;
+}
+
+.register-link {
+    color: $white-color;
+    font-size: 2rem;
+    background: $gradient;
+    padding: 0.8rem 3.8rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px $blue-color;
+    background-size: 200%;
+    transition: 0.5s;
+}
+
+.register-link:hover,
+.register-link.active {
+    background-position: right;
+}
+
+
+
+
