@@ -9,6 +9,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     text-align: center;
     position: relative;
 }
@@ -43,26 +44,6 @@
     margin-top: 4rem;
 }
 
-.input-field {
-    margin-top: 7rem;
-    width: 40rem;
-    height: 5rem;
-    background-color: $bg-color;
-    border: none;
-    border-bottom: 2px solid $white-color;
-    color: $white-color;
-    font-size: 1.8rem;
-}
-
-.input-field:focus {
-    outline: none;
-}
-
-.input-field::placeholder {
-    color: $white-color;
-    font-size: 1.8rem;
-    font-weight: 400;
-}
 
 .submit-button {
     cursor: pointer;
@@ -103,4 +84,47 @@
 
 .login-content a:hover {
     color: $light-blue;
+}
+
+.inputBox {
+    position: relative;
+    width: 40rem;
+    margin-top: 6rem;
+}
+
+.inputBox input {
+    position: relative;
+    width: 100%;
+    padding: 1rem 0;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid $white-color;
+    outline: none;
+    font-size: 2rem;
+    color: white;
+    transition: 0.5s ease;
+}
+
+.inputBox label {
+    position: absolute;
+    left: 0;
+    color: white;
+    padding: 1rem 0;
+    font-size: 2rem;
+    pointer-events: none;
+    transition: 0.5s ease;
+}
+
+
+
+
+.inputBox input:focus ~ label,
+.inputBox input:valid ~ label {
+    color: $blue-color;
+    transform: translateY(-25px);
+}
+
+.inputBox input:focus,
+.inputBox input:valid {
+    border-bottom: 2px solid $blue-color;
 }
