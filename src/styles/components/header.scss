@@ -75,6 +75,7 @@
 .login-link.active {
     color: white;
     background-color: $blue-color;
+    box-shadow: 0 0 2rem $blue-color;
 }
 
 .register-link {

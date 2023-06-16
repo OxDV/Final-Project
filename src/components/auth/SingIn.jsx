@@ -16,10 +16,6 @@ const SingIn = () => {
         })
     }
 
-    // useEffect(() => {
-    //     console.log(email  password);
-    // }, [email, password])
-
   return (
     <div className='sing-in-container'>
         <form action="" onSubmit={singIn}>

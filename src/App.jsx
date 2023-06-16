@@ -7,6 +7,7 @@ import WhyUs from './pages/WhyUs'
 import Contacts from './pages/Contacts'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import Account from './pages/Account'
 
 function App() {
 
@@ -22,7 +23,7 @@ function App() {
             <Route path='/contacts' element={<Contacts/>}/>
             <Route path='/login' element={<Login/>}/>
             <Route path='/register' element={<Register/>}/>
-            
+            <Route path='/account' element={<Account/>}/>
           </Routes>
       </div>
     </BrowserRouter>
