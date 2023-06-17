@@ -20,7 +20,7 @@ const Cryptocurrencies = () => {
 
   return (
     <div className="cryptocurrencies-container">
-      {data && (
+      {!data ? <Loader/> : (
         <div className="cryptocurrencies-field">
           <div className="column" id='column-1'>
             <p>#</p>
