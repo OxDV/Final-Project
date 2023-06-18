@@ -10,6 +10,8 @@ const firebaseConfig = {
   storageBucket: "final-project-8a9cc.appspot.com",
   messagingSenderId: "510679227058",
   appId: "1:510679227058:web:e7427f441c5d491813c7ab",
+  databaseURL:
+    "https://final-project-8a9cc-default-rtdb.europe-west1.firebasedatabase.app",
 };
 
 // Initialize Firebase
