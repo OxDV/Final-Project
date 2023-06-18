@@ -53,8 +53,8 @@ const Cryptocurrencies = ({ data }) => {
           <div className="column">
           <p className='span-p'>Price</p>
             {data.map((elem, index) => (
-              <p key={index} className="coin-price">
-                ${elem.current_price.toLocaleString()}
+              <p key={index} className="coin-price">$
+                {elem.current_price>1 ? elem.current_price.toLocaleString() : elem.current_price.toFixed(6)}
               </p>
             ))}
           </div>
@@ -62,7 +62,7 @@ const Cryptocurrencies = ({ data }) => {
           <p className='span-p'>Market Cup</p>
             {data.map((elem, index) => (
               <p key={index} className="coin-market-cup">
-                ${(Math.round(elem.market_cap / 1000000000)).toLocaleString()}B
+                {elem.market_cap > 1000000000 ? '$' + (elem.market_cap / 1000000000).toFixed(2) +'B' : '$' + (elem.market_cap / 1000000).toFixed(2) + 'M'}
               </p>
             ))}
           </div>
