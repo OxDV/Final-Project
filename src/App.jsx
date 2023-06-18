@@ -11,11 +11,11 @@ import Contacts from './pages/Contacts';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Account from './pages/Account';
+import axios from 'axios';
 
 function App() {
   const [data, setData] = useState({});
   const [coinData, setCoinData] = useState('');
-  const [lastUpdate, setLastUpdate] = useState('');
 
   useEffect(() => {
     const fetchData = () => {
@@ -32,13 +32,29 @@ function App() {
   useEffect(() => {
     if (data.coinData && data.coinData.length > 0) {
       setCoinData(data.coinData);
-      console.log(data);
     }
   }, [data]);
 
   useEffect(() => {
-    console.log(coinData);
-  }, [coinData]);
+    console.log(data.lastUpdate);
+    const currentTimestamp = Date.now(); // Получить текущую временную метку
+    const lastUpdateTimestamp = data.lastUpdate; // Получить временную метку из базы данных
+
+    const differenceInMilliseconds = currentTimestamp - lastUpdateTimestamp;
+    const differenceInMinutes = differenceInMilliseconds / 60000;
+    if (differenceInMinutes > 1) {
+      console.log("Данные старше одной минуты");
+      axios.get('https://us-central1-final-project-8a9cc.cloudfunctions.net/fetchCoinData')
+      .then(() => {
+        console.log('Запрос выполнен успешно');
+      })
+      .catch(() => {
+        console.error(Error);
+      });
+    } else {
+      console.log("Данные моложе одной минуты");
+    }
+  }, [coinData])
 
   return (
     <BrowserRouter>
