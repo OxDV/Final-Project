@@ -1,71 +1,88 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
-import "../styles/pages/cryptocurrencies.scss"
+import React, { useEffect, useState } from 'react';
+import { FaCaretUp, FaCaretDown } from 'react-icons/fa';
+import '../styles/pages/cryptocurrencies.scss';
 import Loader from '../components/Loader';
+import database from '../Firebase';
 
-export default function Cryptocurrencies() {
-  const [coins, setCoins] = useState([]);
-  const [coinsInfo, setCoinsInfo] = useState([]);
-
-  // function getCoins() {
-  //   if (coins.length > 0) {
-  //     const intervalId = setInterval(() => {
-  //       axios
-  //         .get(
-  //           "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false&locale=en"
-  //         )
-  //         .then((res) => {
-  //           setCoins(res.data);
-  //           console.log(coins);
-  //         });
-  //     }, 10000);
-  //     return () => clearInterval(intervalId);
-  //   } else {
-  //     axios.get(
-  //       "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false&locale=en"
-  //     )
-  //     .then((res) => {
-  //       setCoins(res.data);
-  //     });
-  //   }
-    
-  // }
-
-  // useEffect(() => {
-  //   getCoins();
-  // }, []);
+const Cryptocurrencies = () => {
+  const [data, setData] = useState(null);
 
   useEffect(() => {
-    if (coins.length > 0) {
-      const updatedCoinsInfo = coins.map((coin) => {
-        return {
-          name: coin.name,
-          price_change_percentage_24h: coin.price_change_percentage_24h,
-          current_price: coin.current_price,
-          market_cap: coin.market_cap,
-          id: coin.market_cap_rank
-        };
-      });
-      setCoinsInfo(updatedCoinsInfo);
-      console.log(updatedCoinsInfo);
-    }
-  }, [coins]);
+    const fetchData = async () => {
+      const response = await fetch('https://us-central1-final-project-8a9cc.cloudfunctions.net/checkDataValidity');
+      const data = await response.json();
+      setData(data);
+      console.log(data);
+    };
+
+    fetchData();
+  }, []);
 
   return (
-    <div className='cryptocurrencies-container'>
-      {coinsInfo.length > 0 ? (
-      coinsInfo.map((coin) => (
-        <ul key={coin.id}>
-          <li>{coin.id}</li>
-          <li>{coin.name}</li>
-          <li>{coin.price_change_percentage_24h}</li>
-          <li>{coin.current_price}</li>
-          <li>{coin.market_cap}</li>
-        </ul>
-      ))
-      ) : (
-        <Loader/>
+    <div className="cryptocurrencies-container">
+      {!data ? <Loader/> : (
+        <div className="cryptocurrencies-field">
+          <div className="column" id='column-1'>
+            <p>#</p>
+            {data.slice(0, 10).map((elem, index) => (
+              <p key={index} className="id">
+                {elem.market_cap_rank}
+              </p>
+            ))}
+          </div>
+          <div className="column">
+          <p className='span-p'>Name</p>
+            {data.slice(0, 10).map((elem, index) => (
+              <img key={index} className='coin-img' src={elem.image} alt="" />
+            ))}
+          </div>
+          <div className="column">
+          <p></p>
+            {data.slice(0, 10).map((elem, index) => (
+              <p key={index} className="coin-name">
+                {elem.name} • {elem.symbol.toUpperCase()}
+              </p>
+            ))}
+          </div>
+          <div className="column">
+          <p className='span-p'>Change (24h)</p>
+            {data.slice(0, 10).map((elem, index) => (
+              <div key={index} className="coin-change">
+                {elem.price_change_percentage_24h < 0 ? (
+                  <FaCaretDown className="icon-down" />
+                ) : (
+                  <FaCaretUp className="icon-up" />
+                )}
+                <p
+                  className={`coin-change ${
+                    elem.price_change_percentage_24h < 0 ? 'negative' : 'positive'
+                  }`}
+                >
+                  {(elem.price_change_percentage_24h).toFixed(2)}%
+                </p>
+              </div>
+            ))}
+          </div>
+          <div className="column">
+          <p className='span-p'>Price</p>
+            {data.slice(0, 10).map((elem, index) => (
+              <p key={index} className="coin-price">
+                ${elem.current_price.toLocaleString()}
+              </p>
+            ))}
+          </div>
+          <div className="column">
+          <p className='span-p'>Market Cup</p>
+            {data.slice(0, 10).map((elem, index) => (
+              <p key={index} className="coin-market-cup">
+                ${(Math.round(elem.market_cap / 1000000000)).toLocaleString()}B
+              </p>
+            ))}
+          </div>
+        </div>
       )}
     </div>
   );
-}
+};
+
+export default Cryptocurrencies;
