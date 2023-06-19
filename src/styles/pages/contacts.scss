@@ -4,4 +4,85 @@
     width: 100%;
     height: 92vh;
     background-color: $bg-color;
+    display: flex;
+    justify-content: center;
+}
+
+.contacts-content-field {
+    width: 128rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contacts-info-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+}
+
+.contacts-tittel {
+    background: $gradient;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: 0.5s;
+    font-size: 6rem;
+    margin: 7rem;
+}
+
+
+
+.social-links-container p {
+    color: $gray-color;
+    font-size: 1.8rem;
+    margin-top: 0rem;
+}
+
+.social-links-container h3 {
+    color: $white-color;
+}
+
+.social-links-container img {
+    width: 8rem;
+    height: 8rem;
+    margin-right: 3rem;
+}
+
+.telegram-info {
+    display: flex;
+    align-items: center;
+    margin-top: 6rem;
+}
+
+.telegram-info span {
+    color: $blue-color;
+}
+
+.email-info {
+    display: flex;
+    align-items: center;
+    margin-top: 6rem;
+}
+
+
+
+.address-info {
+    display: flex;
+    align-items: center;
+    margin-top: 6rem;
+}
+
+.address-company {
+    width: 30rem;
+}
+
+.map-container div {
+    border-radius: 3rem;
+    overflow: hidden;
+    width: 67rem;
+    height: 50rem;
+    border: 2px solid $blue-color;
+    box-shadow: 0 0 30px $blue-color;
+    background-color: transparent;
 }
