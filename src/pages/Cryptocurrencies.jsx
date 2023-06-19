@@ -8,6 +8,8 @@ const Cryptocurrencies = ({ data }) => {
   return (
     <div className="cryptocurrencies-container">
       {!data ? <Loader/> : (
+        <div>
+          <h1 id='tittle-cryptocurrencies-page'>Cryptocurrencies</h1>
         <div className="cryptocurrencies-field">
           <div className="column" id='column-1'>
             <p>#</p>
@@ -66,6 +68,7 @@ const Cryptocurrencies = ({ data }) => {
               </p>
             ))}
           </div>
+        </div>
         </div>
       )}
     </div>

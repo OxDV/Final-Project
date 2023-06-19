@@ -8,6 +8,7 @@
     justify-content: center;
 }
 
+
 .contacts-content-field {
     width: 128rem;
     display: flex;
@@ -24,6 +25,7 @@
 
 .contacts-tittel {
     background: $gradient;
+    background-size: 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     transition: 0.5s;
@@ -62,7 +64,7 @@
 .email-info {
     display: flex;
     align-items: center;
-    margin-top: 6rem;
+    margin-top: 8rem;
 }
 
 

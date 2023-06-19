@@ -16,6 +16,19 @@
   justify-content: space-around;
 }
 
+#tittle-cryptocurrencies-page {
+  width: 100%;
+  text-align: center;
+  background: $gradient;
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: 0.5s;
+    font-size: 6rem;
+    margin-top: 7rem;
+    margin-bottom: 3rem;
+}
+
 .column {
   display: flex;
   flex-direction: column;

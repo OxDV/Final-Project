@@ -10,21 +10,21 @@ export default function Contacts() {
         <div className='contacts-info-container'>
           <div className='social-links-container'>
             <div className='telegram-info'>
-            <img src="./images/telegram-icon.png" alt="" />
+            <a href="https://t.me/heavy_trend" target='blank'><img src="./images/telegram-icon.png" alt="" /></a>
             <div>
               <p>Telegram</p>
               <h3>e<span>X</span>change</h3>
             </div>
             </div>
             <div className='email-info'>
-            <img src="./images/email-icon.png" alt="" />
+            <a href="mailto:ask@exchange.com"><img src="./images/email-icon.png" alt="" /></a>
             <div className='test'>
               <p>E-mail</p>
               <h3>ask@exchange.com</h3>
             </div>
             </div>
             <div className='address-info'>
-            <img src="./images/map-icon.png" alt="" />
+            <a href="https://goo.gl/maps/5DaWe1zWDvHziot86" target='blank'><img src="./images/map-icon.png" alt="" /></a>
             <div >
               <p>Address</p>
               <h3 className='address-company'>Marienplatz 15, Munich 80333, Germany</h3>
