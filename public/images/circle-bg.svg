@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="777" height="777" viewBox="0 0 777 777">
+  <defs>
+    <filter id="Контур_23" x="0" y="0" width="777" height="777" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="49.5" result="blur"/>
+      <feFlood flood-color="#0d90d1"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Контур_23)">
+    <g id="Контур_23-2" data-name="Контур 23" transform="translate(148.5 148.5)" fill="#03002b">
+      <path d="M 240 455 C 121.4485855102539 455 25 358.5514221191406 25 240 C 25 121.4485855102539 121.4485855102539 25 240 25 C 358.5514221191406 25 455 121.4485855102539 455 240 C 455 358.5514221191406 358.5514221191406 455 240 455 Z" stroke="none"/>
+      <path d="M 240 50 C 135.2336730957031 50 50 135.2336730957031 50 240 C 50 344.7663269042969 135.2336730957031 430 240 430 C 344.7663269042969 430 430 344.7663269042969 430 240 C 430 135.2336730957031 344.7663269042969 50 240 50 M 240 0 C 372.54833984375 0 480 107.45166015625 480 240 C 480 372.54833984375 372.54833984375 480 240 480 C 107.45166015625 480 0 372.54833984375 0 240 C 0 107.45166015625 107.45166015625 0 240 0 Z" stroke="none" fill="#0d90d1"/>
+    </g>
+  </g>
+</svg>

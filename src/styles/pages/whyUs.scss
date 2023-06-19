@@ -20,5 +20,177 @@
     -webkit-text-fill-color: transparent;
     transition: 0.5s;
     font-size: 6rem;
-    margin: 7rem;
+    margin-bottom: 8rem;
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.why-us-info {
+    display: flex;
+    justify-content: space-around;
+}
+
+.why-us-advantages {
+    color: $light-blue;
+    width: 30rem;
+}
+
+.why-us-advantages div {
+    margin-bottom: 4rem;
+}
+
+.why-us-advantages div h3 {
+    font-size: 2.4rem;
+}
+
+.why-us-advantages div p {
+    font-size: 1.8rem;
+}
+
+.circle-bg {
+    width: 60rem;
+    height: 60rem;
+    margin-top: -5rem;
+}
+
+.why-us-images {
+    display: flex;
+    position: relative;
+}
+
+.image-container-first {
+    position: absolute;
+    top: -15%;
+    left: 0;
+}
+
+.square-first {
+    position: relative;
+    display: flex;
+    width: 30rem;
+    height: 27rem;
+}
+
+.text-overlay-first {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 20%;
+    left: 13%;
+}
+
+.text-overlay-first img {
+    width: 9rem;
+    height: 9rem;
+    margin-bottom: 2rem;
+}
+
+
+
+
+
+
+
+
+
+
+.image-container-second {
+    position: absolute;
+    top: -5%;
+    right: -5%;
+}
+
+.square-second {
+    position: relative;
+    display: flex;
+    width: 30rem;
+    height: 27rem;
+}
+
+.text-overlay-second {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 20%;
+    left: 13%;
+}
+
+.text-overlay-second img {
+    width: 9rem;
+    height: 9rem;
+    margin-bottom: 2rem;
+}
+
+
+
+
+
+
+
+.image-container-third {
+    position: absolute;
+    bottom: 10%;
+    left: -10%;
+}
+
+.square-third {
+    position: relative;
+    display: flex;
+    width: 30rem;
+    height: 27rem;
+}
+
+.text-overlay-third {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 20%;
+    left: 13%;
+}
+
+.text-overlay-third img {
+    width: 9rem;
+    height: 9rem;
+    margin-bottom: 2rem;
+}
+
+
+
+
+
+
+
+.image-container-four {
+    position: absolute;
+    bottom: 0;
+    right: 5%;
+}
+
+.square-four {
+    position: relative;
+    display: flex;
+    width: 30rem;
+    height: 27rem;
+}
+
+.text-overlay-four {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 20%;
+    left: 13%;
+}
+
+.text-overlay-four img {
+    width: 9rem;
+    height: 9rem;
+    margin-bottom: 2rem;
 }
