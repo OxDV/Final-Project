@@ -4,7 +4,7 @@
     background-color: $bg-color;
     color: white;
     width: 100%;
-    height: 92vh;
+    height: 120vh;
     display: flex;
     justify-content: center;
 }
@@ -12,6 +12,11 @@
 .section1-content-container {
     width: 128rem;
 }
+
+.part-with-exchange {
+    display: flex;
+}
+
 
 .main-text h1 {
     background: $gradient;
@@ -21,12 +26,14 @@
     -webkit-text-fill-color: transparent;
     transition: 0.5s;
     font-size: 6rem;
+    margin-top: 8rem;
 }
 
 .main-text p {
     width: 71rem;
     color: $light-blue;
     font-size: 2rem;
+    margin: 3rem 0;
 }
 
 
@@ -94,4 +101,28 @@
 }
 
 
+.bg-main-img {
+    width: 50rem;
+    height: 74rem;
+}
 
+
+.current-coin-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.current-coin-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 22rem;
+    height: 6rem;
+    background-color: $dark-purple;
+}
+
+.current-coin-info img {
+    width: 4rem;
+    height: 4rem;
+}

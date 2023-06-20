@@ -1,21 +1,21 @@
-import { useEffect, useState } from 'react';
-import { ref, onValue } from 'firebase/database';
-import database from './firebase'; // Import the 'database' object
+import { useEffect, useState } from "react";
+import { ref, onValue } from "firebase/database";
+import database from "./firebase"; // Import the 'database' object
 
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Header from './components/Header';
-import Home from './pages/Home';
-import Cryptocurrencies from './pages/Cryptocurrencies';
-import WhyUs from './pages/WhyUs';
-import Contacts from './pages/Contacts';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Account from './pages/Account';
-import axios from 'axios';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Header from "./components/Header";
+import Home from "./pages/Home";
+import Cryptocurrencies from "./pages/Cryptocurrencies";
+import WhyUs from "./pages/WhyUs";
+import Contacts from "./pages/Contacts";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Account from "./pages/Account";
+import axios from "axios";
 
 function App() {
   const [data, setData] = useState({});
-  const [coinData, setCoinData] = useState('');
+  const [coinData, setCoinData] = useState("");
 
   useEffect(() => {
     const fetchData = () => {
@@ -44,26 +44,32 @@ function App() {
     const differenceInMinutes = differenceInMilliseconds / 60000;
     if (differenceInMinutes > 1) {
       console.log("Данные старше одной минуты");
-      axios.get('https://us-central1-final-project-8a9cc.cloudfunctions.net/fetchCoinData')
-      .then(() => {
-        console.log('Запрос выполнен успешно');
-      })
-      .catch(() => {
-        console.error(Error);
-      });
+      axios
+        .get(
+          "https://us-central1-final-project-8a9cc.cloudfunctions.net/fetchCoinData"
+        )
+        .then(() => {
+          console.log("Запрос выполнен успешно");
+        })
+        .catch(() => {
+          console.error(Error);
+        });
     } else {
       console.log("Данные моложе одной минуты");
     }
-  }, [coinData])
+  }, [coinData]);
 
   return (
     <BrowserRouter>
       <div className="app">
         <Header />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home data={coinData} />} />
           <Route path="/why_us" element={<WhyUs />} />
-          <Route path="/cryptocurrencies" element={<Cryptocurrencies data={coinData} />} />
+          <Route
+            path="/cryptocurrencies"
+            element={<Cryptocurrencies data={coinData} />}
+          />
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
