@@ -1,11 +1,61 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/components/section1.scss";
 import Loader from "./Loader";
+import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 
 export default function Section1({ data }) {
-  // useEffect(() => {
-  //   console.log(data);
-  // });
+  const [isBuyListActive, setisBuyListActive] = useState(false);
+  const [isSellListActive, setIsSellListActive] = useState(false);
+  const [optionSellSelected, setOptionSellSelected] = useState(0);
+  const [optionBuySelected, setOptionBuySelected] = useState(2);
+  const [inputBuyValue, setInputBuyValue] = useState("");
+  const [inputSellValue, setInputSellValue] = useState("");
+
+  const handleInputBuyChange = (event) => {
+    // const value = event.target.value;
+    // const sanitizedValue = value.replace(/[^0-9]/g, "");
+    // const truncatedValue = sanitizedValue.slice(0, 5);
+    // setInputBuyValue(truncatedValue);
+  };
+  const handleInputSellChange = (event) => {
+    const value = event.target.value;
+    const sanitizedValue = value.replace(/[^0-9]/g, "");
+    const truncatedValue = sanitizedValue.slice(0, 5);
+    setInputSellValue(truncatedValue);
+  };
+
+  useEffect(() => {
+    if (data) {
+      const res =
+        (inputSellValue * data[optionSellSelected].current_price) /
+        data[optionBuySelected].current_price;
+      setInputBuyValue(res.toFixed(2));
+    }
+  }, [inputSellValue, optionSellSelected, optionBuySelected]);
+
+  function openBuyList() {
+    setisBuyListActive(!isBuyListActive);
+  }
+
+  function closeBuyList() {
+    setisBuyListActive(!isBuyListActive);
+  }
+  function openSellList() {
+    setIsSellListActive(!isSellListActive);
+  }
+
+  function closeSellList() {
+    setIsSellListActive(!isSellListActive);
+  }
+
+  function handleOptionSellSelect(value) {
+    setOptionSellSelected(value);
+    setIsSellListActive(!isSellListActive);
+  }
+  function handleOptionBuySelect(value) {
+    setOptionBuySelected(value);
+    setisBuyListActive(!setisBuyListActive);
+  }
 
   return (
     <section className="section1-container">
@@ -25,22 +75,116 @@ export default function Section1({ data }) {
             <div className="exchange-menu">
               <div className="choice-of-cryptocurrencies">
                 <div className="sell-part">
-                  <p>Sell</p>
+                  <h3>Sell</h3>
                   <div className="sell-choose-container">
-                    <div>
-                      <img src="" alt="" />
+                    <div className="buy-coin">
+                      <div className="current-buy-coin">
+                        {data && (
+                          <>
+                            <img src={data[optionSellSelected].image} alt="" />
+                            <p>{data[optionSellSelected].name}</p>
+                            {isSellListActive == false ? (
+                              <FaAngleDown
+                                onClick={openSellList}
+                                className="open-buy-list"
+                              />
+                            ) : (
+                              <FaAngleUp onClick={closeSellList} />
+                            )}
+                          </>
+                        )}
+                      </div>
+                      {isSellListActive && (
+                        <ul className="list-buy-container">
+                          {data ? (
+                            data.slice(0, 5).map((elem, index) => (
+                              <li
+                                className="list-buy-coin"
+                                key={index}
+                                onClick={() => handleOptionSellSelect(index)}
+                              >
+                                <img src={elem.image} alt="" />
+                                {elem.name}
+                                <div className="list-buy-min-amount">
+                                  <p>1 {elem.symbol.toUpperCase()}</p>
+                                </div>
+                              </li>
+                            ))
+                          ) : (
+                            <p>Loading</p>
+                          )}
+                        </ul>
+                      )}
                     </div>
-                    <div></div>
+                    <div className="buy-amount">
+                      <div className="current-buy-amount">
+                        <input
+                          type="text"
+                          value={inputSellValue}
+                          onChange={handleInputSellChange}
+                        />
+                        {data && (
+                          <p>{data[optionSellSelected].symbol.toUpperCase()}</p>
+                        )}
+                      </div>
+                    </div>
                   </div>
                 </div>
 
                 <div className="buy-part">
-                  <p>Buy</p>
+                  <h3>Buy</h3>
                   <div className="buy-choose-container">
-                    <div>
-                      <img src="" alt="" />
+                    <div className="buy-coin">
+                      <div className="current-buy-coin">
+                        {data && (
+                          <>
+                            <img src={data[optionBuySelected].image} alt="" />
+                            <p>{data[optionBuySelected].name}</p>
+                            {isBuyListActive == false ? (
+                              <FaAngleDown
+                                onClick={openBuyList}
+                                className="open-buy-list"
+                              />
+                            ) : (
+                              <FaAngleUp onClick={closeBuyList} />
+                            )}
+                          </>
+                        )}
+                      </div>
+                      {isBuyListActive && (
+                        <ul className="list-buy-container">
+                          {data ? (
+                            data.slice(0, 5).map((elem, index) => (
+                              <li
+                                className="list-buy-coin"
+                                key={index}
+                                onClick={() => handleOptionBuySelect(index)}
+                              >
+                                <img src={elem.image} alt="" />
+                                {elem.name}
+                                <div className="list-buy-min-amount">
+                                  <p>1 {elem.symbol.toUpperCase()}</p>
+                                </div>
+                              </li>
+                            ))
+                          ) : (
+                            <p>Loading</p>
+                          )}
+                        </ul>
+                      )}
                     </div>
-                    <div></div>
+                    <div className="buy-amount">
+                      <div className="current-buy-amount">
+                        <input
+                          type="text"
+                          value={inputBuyValue}
+                          onChange={handleInputBuyChange}
+                        />
+                        {data && (
+                          <p>{data[optionBuySelected].symbol.toUpperCase()}</p>
+                        )}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

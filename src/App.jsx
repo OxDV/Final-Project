@@ -12,6 +12,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Account from "./pages/Account";
 import axios from "axios";
+import Footer from "./components/Footer";
 
 function App() {
   const [data, setData] = useState({});
@@ -75,6 +76,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/account" element={<Account />} />
         </Routes>
+        <Footer />
       </div>
     </BrowserRouter>
   );
