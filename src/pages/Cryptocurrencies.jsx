@@ -4,7 +4,15 @@ import "../styles/pages/cryptocurrencies.scss";
 import Loader from "../components/Loader";
 import database from "../Firebase";
 
-const Cryptocurrencies = ({ data }) => {
+const Cryptocurrencies = ({
+  data,
+  amountCryptocurrencies,
+  setAmountCryptocurrencies,
+}) => {
+  useEffect(() => {
+    setAmountCryptocurrencies(100);
+  }, [amountCryptocurrencies]);
+
   return (
     <div className="cryptocurrencies-container">
       {!data ? (
@@ -15,7 +23,7 @@ const Cryptocurrencies = ({ data }) => {
           <div className="cryptocurrencies-field">
             <div className="column" id="column-1">
               <p>#</p>
-              {data.map((elem, index) => (
+              {data.slice(0, amountCryptocurrencies).map((elem, index) => (
                 <p key={index} className="id">
                   {elem.market_cap_rank}
                 </p>
@@ -23,13 +31,13 @@ const Cryptocurrencies = ({ data }) => {
             </div>
             <div className="column">
               <p className="span-p">Name</p>
-              {data.map((elem, index) => (
+              {data.slice(0, amountCryptocurrencies).map((elem, index) => (
                 <img key={index} className="coin-img" src={elem.image} alt="" />
               ))}
             </div>
             <div className="column">
               <p></p>
-              {data.map((elem, index) => (
+              {data.slice(0, amountCryptocurrencies).map((elem, index) => (
                 <p key={index} className="coin-name">
                   {elem.name} • {elem.symbol.toUpperCase()}
                 </p>
@@ -37,7 +45,7 @@ const Cryptocurrencies = ({ data }) => {
             </div>
             <div className="column">
               <p className="span-p">Change (24h)</p>
-              {data.map((elem, index) => (
+              {data.slice(0, amountCryptocurrencies).map((elem, index) => (
                 <div key={index} className="coin-change">
                   {elem.price_change_percentage_24h < 0 ? (
                     <FaCaretDown className="icon-down" />
@@ -58,7 +66,7 @@ const Cryptocurrencies = ({ data }) => {
             </div>
             <div className="column">
               <p className="span-p">Price</p>
-              {data.map((elem, index) => (
+              {data.slice(0, amountCryptocurrencies).map((elem, index) => (
                 <p key={index} className="coin-price">
                   $
                   {elem.current_price > 1
@@ -69,7 +77,7 @@ const Cryptocurrencies = ({ data }) => {
             </div>
             <div className="column">
               <p className="span-p">Market Cup</p>
-              {data.map((elem, index) => (
+              {data.slice(0, amountCryptocurrencies).map((elem, index) => (
                 <p key={index} className="coin-market-cup">
                   {elem.market_cap > 1000000000
                     ? "$" + (elem.market_cap / 1000000000).toFixed(2) + "B"

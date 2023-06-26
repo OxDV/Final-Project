@@ -41,38 +41,22 @@ export default function WhyUs() {
 
             <div className="image-container-first">
               <div className="square-first">
-                <img src="./images/square-bg.png" alt="" />
-                <div className="text-overlay-first">
-                  <img src="./images/low-commissions.png" alt="" />
-                  <h3>LOW COMMISSIONS</h3>
-                </div>
+                <img src="./images/low-commissions.png" alt="" />
               </div>
             </div>
             <div className="image-container-second">
               <div className="square-second">
-                <img src="./images/square-bg.png" alt="" />
-                <div className="text-overlay-second">
-                  <img src="./images/low-commissions.png" alt="" />
-                  <h3>LOW COMMISSIONS</h3>
-                </div>
+                <img src="./images/service-speed.png" alt="" />
               </div>
             </div>
             <div className="image-container-third">
               <div className="square-third">
-                <img src="./images/square-bg.png" alt="" />
-                <div className="text-overlay-third">
-                  <img src="./images/low-commissions.png" alt="" />
-                  <h3>LOW COMMISSIONS</h3>
-                </div>
+                <img src="./images/guarantee.png" alt="" />
               </div>
             </div>
             <div className="image-container-four">
-              <div className="square-four">
-                <img src="./images/square-bg.png" alt="" />
-                <div className="text-overlay-four">
-                  <img src="./images/low-commissions.png" alt="" />
-                  <h3>LOW COMMISSIONS</h3>
-                </div>
+              <div className="square-third">
+                <img src="./images/support.png" alt="" />
               </div>
             </div>
           </div>

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ref, onValue } from "firebase/database";
 import database from "./firebase"; // Import the 'database' object
 
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import Cryptocurrencies from "./pages/Cryptocurrencies";
@@ -17,6 +17,7 @@ import Footer from "./components/Footer";
 function App() {
   const [data, setData] = useState({});
   const [coinData, setCoinData] = useState("");
+  const [amountCryptocurrencies, setAmountCryptocurrencies] = useState();
 
   useEffect(() => {
     const fetchData = () => {
@@ -65,11 +66,26 @@ function App() {
       <div className="app">
         <Header />
         <Routes>
-          <Route path="/" element={<Home data={coinData} />} />
+          <Route
+            path="/"
+            element={
+              <Home
+                data={coinData}
+                amountCryptocurrencies={amountCryptocurrencies}
+                setAmountCryptocurrencies={setAmountCryptocurrencies}
+              />
+            }
+          />
           <Route path="/why_us" element={<WhyUs />} />
           <Route
             path="/cryptocurrencies"
-            element={<Cryptocurrencies data={coinData} />}
+            element={
+              <Cryptocurrencies
+                data={coinData}
+                amountCryptocurrencies={amountCryptocurrencies}
+                setAmountCryptocurrencies={setAmountCryptocurrencies}
+              />
+            }
           />
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/login" element={<Login />} />

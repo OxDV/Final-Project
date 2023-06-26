@@ -200,18 +200,16 @@ export default function Section1({ data }) {
         </div>
         <div className="current-coins-container">
           <div className="current-coin-container">
-            {!data ? (
-              <Loader />
-            ) : (
-              data.slice(0, 5).map((elem, index) => (
-                <div key={index} className="current-coin-info">
-                  <img src={elem.image} alt="" />
-                  <p className="id">
-                    {elem.current_price.toLocaleString()} USDT
-                  </p>
-                </div>
-              ))
-            )}
+            {!data
+              ? null
+              : data.slice(0, 5).map((elem, index) => (
+                  <div key={index} className="current-coin-info">
+                    <img src={elem.image} alt="" />
+                    <p className="id">
+                      {elem.current_price.toLocaleString()} USDT
+                    </p>
+                  </div>
+                ))}
           </div>
         </div>
       </div>
