@@ -13,11 +13,22 @@ import Register from "./pages/Register";
 import Account from "./pages/Account";
 import axios from "axios";
 import Footer from "./components/Footer";
+import { auth } from "../src/Firebase";
 
 function App() {
   const [data, setData] = useState({});
   const [coinData, setCoinData] = useState("");
   const [amountCryptocurrencies, setAmountCryptocurrencies] = useState();
+  const [isLogin, setIsLogin] = useState(false);
+
+  useEffect(() => {
+    if (auth.currentUser) {
+      setIsLogin(true);
+      console.log(auth.currentUser);
+    } else {
+      setIsLogin(false);
+    }
+  });
 
   useEffect(() => {
     const fetchData = () => {
@@ -64,7 +75,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="app">
-        <Header />
+        <Header isLogin={isLogin} setIsLogin={setIsLogin} />
         <Routes>
           <Route
             path="/"
@@ -88,9 +99,12 @@ function App() {
             }
           />
           <Route path="/contacts" element={<Contacts />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/account" element={<Account />} />
+          <Route path="/login" element={<Login setIsLogin={setIsLogin} />} />
+          <Route
+            path="/register"
+            element={<Register setIsLogin={setIsLogin} />}
+          />
+          <Route path="/account" element={<Account isLogin={isLogin} />} />
         </Routes>
         <Footer />
       </div>
