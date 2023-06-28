@@ -14,6 +14,7 @@ import Account from "./pages/Account";
 import axios from "axios";
 import Footer from "./components/Footer";
 import { auth } from "../src/Firebase";
+import Exchange from "./pages/Exchange";
 
 function App() {
   const [data, setData] = useState({});
@@ -110,6 +111,10 @@ function App() {
             element={<Register setIsLogin={setIsLogin} isLogin={isLogin} />}
           />
           <Route path="/account" element={<Account isLogin={isLogin} />} />
+          <Route
+            path="/exchange"
+            element={<Exchange coinData={coinData} isLogin={isLogin} />}
+          />
         </Routes>
         <Footer />
       </div>

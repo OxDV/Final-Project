@@ -11,12 +11,6 @@ export default function Section1({ data }) {
   const [inputBuyValue, setInputBuyValue] = useState("");
   const [inputSellValue, setInputSellValue] = useState("");
 
-  const handleInputBuyChange = (event) => {
-    // const value = event.target.value;
-    // const sanitizedValue = value.replace(/[^0-9]/g, "");
-    // const truncatedValue = sanitizedValue.slice(0, 5);
-    // setInputBuyValue(truncatedValue);
-  };
   const handleInputSellChange = (event) => {
     const value = event.target.value;
     const sanitizedValue = value.replace(/[^0-9]/g, "");
@@ -56,6 +50,21 @@ export default function Section1({ data }) {
     setOptionBuySelected(value);
     setisBuyListActive(!setisBuyListActive);
   }
+  useEffect(() => {
+    localStorage.setItem("buySelect", optionBuySelected);
+  }, [optionBuySelected]);
+
+  useEffect(() => {
+    localStorage.setItem("sellSelect", optionSellSelected);
+  }, [optionSellSelected]);
+
+  useEffect(() => {
+    localStorage.setItem("sellValue", inputSellValue);
+  }, [inputSellValue]);
+
+  useEffect(() => {
+    localStorage.setItem("buyValue", inputBuyValue);
+  }, [inputBuyValue]);
 
   return (
     <section className="section1-container">
@@ -175,11 +184,7 @@ export default function Section1({ data }) {
                     </div>
                     <div className="buy-amount">
                       <div className="current-buy-amount">
-                        <input
-                          type="text"
-                          value={inputBuyValue}
-                          onChange={handleInputBuyChange}
-                        />
+                        <input type="text" value={inputBuyValue} />
                         {data && (
                           <p>{data[optionBuySelected].symbol.toUpperCase()}</p>
                         )}
@@ -189,7 +194,11 @@ export default function Section1({ data }) {
                 </div>
               </div>
 
-              <a className="exchange-button" href="">
+              <a
+                className="exchange-button"
+                href="/exchange"
+                disabled={!inputSellValue}
+              >
                 Exchange cryptocurrency
               </a>
             </div>

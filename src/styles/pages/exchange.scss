@@ -1,0 +1,65 @@
+@import '../variables.scss';
+
+.exchange-container {
+    width: 100vw;
+    background-color: $bg-color;
+    display: flex;
+    justify-content: center;
+    padding: 8rem 0;
+    color: white;
+}
+
+.exchange-content-container {
+    width: 128rem;
+    height: 100%;
+    color: $white-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.exchange-field {
+    width: 60rem;
+    // height: 64rem;
+    box-shadow: 0 0 50px $blue-color;
+    border-radius: 3rem;
+    border: 3px solid $blue-color;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 5rem 3rem;
+    form {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.logo-exhange-crypto {
+    width: 4rem;
+    height: 4rem;
+}
+
+
+.color-span {
+    color: $light-blue;
+}
+
+.confirm-transaction-button {
+    padding: 1rem 4rem;
+    background-color: $bg-color;
+    border: 3px solid $blue-color;
+    color: $blue-color;
+    font-size: 3.2rem;
+    box-shadow: 0 0 2rem $blue-color;
+    border-radius: 1rem;
+    transition: 0.5s ease;
+}
+
+.confirm-transaction-button:hover {
+    background-color: $blue-color;
+    color: white;
+    box-shadow: 0 0 5rem $blue-color;
+}
