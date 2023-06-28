@@ -1,12 +1,14 @@
 @import '../variables.scss';
 
 .exchange-container {
-    width: 100vw;
+    width: 100%;
     background-color: $bg-color;
     display: flex;
     justify-content: center;
     padding: 8rem 0;
     color: white;
+    padding: 13rem 0;
+
 }
 
 .exchange-content-container {

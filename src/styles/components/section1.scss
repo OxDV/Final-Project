@@ -7,6 +7,7 @@
     // height: 92vh;
     display: flex;
     justify-content: center;
+    padding: 7rem 0;
 }
 
 .section1-content-container {
@@ -197,7 +198,11 @@
     box-shadow: 0 0 10px $blue-color;
     background-size: 200%;
     transition: 0.5s;
+    border: none;
+    cursor: pointer;
 }
+
+
 
 
 .exchange-button:hover {

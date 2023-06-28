@@ -1,28 +1,19 @@
 @import '../variables.scss';
 
 
+
 .sing-in-container {
     width: 100%;
-    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: $bg-color;
     flex-direction: column;
+    padding: 18rem 0;
 }
 
-.sing-in-field {
-    width: 60rem;
-    height: 64rem;
-    box-shadow: 0 0 50px $blue-color;
-    border-radius: 3rem;
-    border: 3px solid $blue-color;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    position: relative;
+.sing-up-field {
+    
 }
 
 

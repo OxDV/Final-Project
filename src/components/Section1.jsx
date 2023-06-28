@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styles/components/section1.scss";
 import Loader from "./Loader";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 export default function Section1({ data }) {
   const [isBuyListActive, setisBuyListActive] = useState(false);
@@ -10,6 +11,7 @@ export default function Section1({ data }) {
   const [optionBuySelected, setOptionBuySelected] = useState(2);
   const [inputBuyValue, setInputBuyValue] = useState("");
   const [inputSellValue, setInputSellValue] = useState("");
+  const navigate = useNavigate();
 
   const handleInputSellChange = (event) => {
     const value = event.target.value;
@@ -17,6 +19,14 @@ export default function Section1({ data }) {
     const truncatedValue = sanitizedValue.slice(0, 5);
     setInputSellValue(truncatedValue);
   };
+
+  function handleExchangeClick() {
+    if (!inputSellValue) {
+      console.log("Error");
+    } else {
+      navigate("/exchange");
+    }
+  }
 
   useEffect(() => {
     if (data) {
@@ -184,7 +194,7 @@ export default function Section1({ data }) {
                     </div>
                     <div className="buy-amount">
                       <div className="current-buy-amount">
-                        <input type="text" value={inputBuyValue} />
+                        <input type="text" value={inputBuyValue} readOnly />
                         {data && (
                           <p>{data[optionBuySelected].symbol.toUpperCase()}</p>
                         )}
@@ -194,13 +204,9 @@ export default function Section1({ data }) {
                 </div>
               </div>
 
-              <a
-                className="exchange-button"
-                href="/exchange"
-                disabled={!inputSellValue}
-              >
+              <button className="exchange-button" onClick={handleExchangeClick}>
                 Exchange cryptocurrency
-              </a>
+              </button>
             </div>
           </div>
           <div>
