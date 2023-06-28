@@ -236,3 +236,10 @@
     width: 4rem;
     height: 4rem;
 }
+
+.error-message {
+    position: absolute;
+    bottom: -40%;
+    color: $red-color;
+    font-size: 1.5rem;
+}

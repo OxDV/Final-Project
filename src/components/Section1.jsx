@@ -11,18 +11,81 @@ export default function Section1({ data }) {
   const [optionBuySelected, setOptionBuySelected] = useState(2);
   const [inputBuyValue, setInputBuyValue] = useState("");
   const [inputSellValue, setInputSellValue] = useState("");
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
   const handleInputSellChange = (event) => {
     const value = event.target.value;
-    const sanitizedValue = value.replace(/[^0-9]/g, "");
+    const sanitizedValue = value.replace(/[^0-9,.]/g, "");
     const truncatedValue = sanitizedValue.slice(0, 5);
     setInputSellValue(truncatedValue);
   };
 
+  useEffect(() => {
+    if (inputSellValue) {
+      setError(false);
+    }
+  }, [inputSellValue]);
+
   function handleExchangeClick() {
     if (!inputSellValue) {
-      console.log("Error");
+      setErrorMessage("Enter the amount of cryptocurrency");
+      setError(true);
+    } else if (
+      (optionSellSelected === 2 || optionSellSelected === 4) &&
+      optionBuySelected === 0 &&
+      inputSellValue < 200
+    ) {
+      setErrorMessage(
+        `Min. 200 ${data[optionSellSelected].symbol.toUpperCase()}`
+      );
+      setError(true);
+    } else if (
+      (optionSellSelected === 2 || optionSellSelected === 4) &&
+      optionBuySelected === 1 &&
+      inputSellValue < 10
+    ) {
+      setErrorMessage(
+        `Min. 10 ${data[optionSellSelected].symbol.toUpperCase()}`
+      );
+      setError(true);
+    } else if (
+      (optionSellSelected === 2 || optionSellSelected === 4) &&
+      optionBuySelected === 3 &&
+      inputSellValue < 10
+    ) {
+      setErrorMessage(
+        `Min. 10 ${data[optionSellSelected].symbol.toUpperCase()}`
+      );
+      setError(true);
+    } else if (
+      optionSellSelected === 1 &&
+      optionBuySelected === 0 &&
+      inputSellValue < 0.1
+    ) {
+      setErrorMessage(
+        `Min. 0.1 ${data[optionSellSelected].symbol.toUpperCase()}`
+      );
+      setError(true);
+    } else if (
+      optionSellSelected === 3 &&
+      optionBuySelected === 0 &&
+      inputSellValue < 1
+    ) {
+      setErrorMessage(
+        `Min. 1 ${data[optionSellSelected].symbol.toUpperCase()}`
+      );
+      setError(true);
+    } else if (
+      optionSellSelected === 3 &&
+      optionBuySelected === 1 &&
+      inputSellValue < 0.1
+    ) {
+      setErrorMessage(
+        `Min. 0.1 ${data[optionSellSelected].symbol.toUpperCase()}`
+      );
+      setError(true);
     } else {
       navigate("/exchange");
     }
@@ -145,6 +208,9 @@ export default function Section1({ data }) {
                         {data && (
                           <p>{data[optionSellSelected].symbol.toUpperCase()}</p>
                         )}
+                        {error ? (
+                          <p className="error-message">{errorMessage}</p>
+                        ) : null}
                       </div>
                     </div>
                   </div>
