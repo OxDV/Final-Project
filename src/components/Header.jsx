@@ -52,12 +52,16 @@ export default function Header({ isLogin, setIsLogin }) {
             {isLogin ? (
               <ul>
                 <li>
-                  <Link className="login-link" to="/account">
+                  <NavLink className="login-link" to="/account">
                     Account
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link className="register-link" onClick={handleSignOut}>
+                  <Link
+                    className="register-link"
+                    to="/"
+                    onClick={handleSignOut}
+                  >
                     Sign Out
                   </Link>
                 </li>

@@ -1,0 +1,26 @@
+@import '../variables.scss';
+ 
+
+.account-container {
+    width: 100vw;
+    height: 92vh;
+    background-color: $bg-color;
+    display: flex;
+    justify-content: center;
+    padding: 8rem 0;
+}
+
+.account-content-container {
+    width: 128rem;
+    height: 100%;
+    color: $white-color;
+}
+
+.title-account {
+    text-align: center;
+}
+
+.discount-content {
+    text-align: center;
+    color: $light-blue;
+}

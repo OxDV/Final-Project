@@ -2,10 +2,10 @@ import React from "react";
 import "../styles/pages/register.scss";
 import SingUp from "../components/auth/SignUp";
 
-export default function Register({ setIsLogin }) {
+export default function Register({ setIsLogin, isLogin }) {
   return (
     <div className="register-container">
-      <SingUp setIsLogin={setIsLogin} />
+      <SingUp setIsLogin={setIsLogin} isLogin={isLogin} />
     </div>
   );
 }

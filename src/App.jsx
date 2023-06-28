@@ -19,16 +19,19 @@ function App() {
   const [data, setData] = useState({});
   const [coinData, setCoinData] = useState("");
   const [amountCryptocurrencies, setAmountCryptocurrencies] = useState();
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(null);
+
+  const currentUser = auth.currentUser;
 
   useEffect(() => {
-    if (auth.currentUser) {
+    if (currentUser) {
       setIsLogin(true);
-      console.log(auth.currentUser);
+      console.log(currentUser);
     } else {
       setIsLogin(false);
+      console.log(currentUser);
     }
-  });
+  }, []);
 
   useEffect(() => {
     const fetchData = () => {
@@ -49,7 +52,6 @@ function App() {
   }, [data]);
 
   useEffect(() => {
-    console.log(data.lastUpdate);
     const currentTimestamp = Date.now(); // Получить текущую временную метку
     const lastUpdateTimestamp = data.lastUpdate; // Получить временную метку из базы данных
 
@@ -99,10 +101,13 @@ function App() {
             }
           />
           <Route path="/contacts" element={<Contacts />} />
-          <Route path="/login" element={<Login setIsLogin={setIsLogin} />} />
+          <Route
+            path="/login"
+            element={<Login setIsLogin={setIsLogin} isLogin={isLogin} />}
+          />
           <Route
             path="/register"
-            element={<Register setIsLogin={setIsLogin} />}
+            element={<Register setIsLogin={setIsLogin} isLogin={isLogin} />}
           />
           <Route path="/account" element={<Account isLogin={isLogin} />} />
         </Routes>

@@ -4,7 +4,7 @@ import { auth } from "../../Firebase";
 import "../../styles/components/signUp.scss";
 import { Link, useNavigate } from "react-router-dom";
 
-const SingUp = ({ setIsLogin }) => {
+const SingUp = ({ setIsLogin, isLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
