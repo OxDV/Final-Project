@@ -1,0 +1,45 @@
+@import '../variables.scss';
+
+.congratulation-container {
+    padding: 8rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.congratulation-content-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    h1 {
+        background: $gradient;
+        background-size: 200%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    img {
+        width: 20rem;
+
+    }
+}
+
+@keyframes takeoff {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+  }
+  
+  .rocket {
+    // position: absolute;
+    // top: 100%;
+    // left: 50%;
+    width: 50rem;
+    transform: translateX(-50%);
+    animation: takeoff 3s linear forwards;
+  }
