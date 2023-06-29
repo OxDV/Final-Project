@@ -250,9 +250,9 @@
         width: 90%;
     }
 
-    .part-with-exchange div {
-        width: 100%;
-    }
+    // .part-with-exchange div {
+    //     width: 100%;
+    // }
 
     .current-coin-container {
         
@@ -262,6 +262,9 @@
         flex-wrap: wrap;
     }
 
+    .choice-of-cryptocurrencies {
+        gap: 3%;
+    }
 
     .current-coin-info {
         width: 20rem;
