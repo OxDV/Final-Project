@@ -194,3 +194,23 @@
     height: 9rem;
     margin-bottom: 2rem;
 }
+
+@media only screen and (max-width: 678px) {
+    .why-us-container {
+        padding: 20rem 0;
+    }
+
+    .why-us-info {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .why-us-images {
+        margin-top: 10rem;
+    }
+
+    .why-us-advantages {
+        width: 60%;
+        text-align: center;
+    }
+}

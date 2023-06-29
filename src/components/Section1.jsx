@@ -275,7 +275,7 @@ export default function Section1({ data }) {
               </button>
             </div>
           </div>
-          <div>
+          <div className="image-mobile-container">
             <img className="bg-main-img" src="./images/bgmain.png" alt="" />
           </div>
         </div>

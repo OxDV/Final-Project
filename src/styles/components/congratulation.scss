@@ -43,3 +43,10 @@
     transform: translateX(-50%);
     animation: takeoff 3s linear forwards;
   }
+
+
+  @media only screen and (max-width:678px){
+    .congratulation-content-container h1 {
+      width: 80%;
+    }
+  }

@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/components/header.scss";
 import { NavLink, Link } from "react-router-dom";
 import { auth } from "../Firebase";
 import { signOut } from "firebase/auth";
+import { FaBars } from "react-icons/fa";
 
 export default function Header({ isLogin, setIsLogin }) {
+  const [toogleActive, setToogleActive] = useState(false);
+  function toogleMenu() {
+    setToogleActive(!toogleActive);
+  }
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
@@ -19,9 +24,39 @@ export default function Header({ isLogin, setIsLogin }) {
     <div className="header-container">
       <div className="header-context-container">
         <div className="logo">
-          <img src="./images/logo2.png" alt="" />
+          <Link to="/">
+            <img src="./images/logo2.png" alt="" />
+          </Link>
         </div>
 
+        <div className="menuToogle" onClick={toogleMenu}>
+          <FaBars />
+        </div>
+
+        {toogleActive ? (
+          <div className="nav-mobile-links">
+            <ul onClick={toogleMenu}>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/why_us">Why Us</Link>
+              </li>
+              <li>
+                <Link to="/cryptocurrencies">Cryptocurrencies</Link>
+              </li>
+              <li>
+                <Link to="/contacts">Contacts</Link>
+              </li>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+              <li>
+                <Link to="/register">Register</Link>
+              </li>
+            </ul>
+          </div>
+        ) : null}
         <div className="header-navigation">
           <div className="header-links">
             <ul>

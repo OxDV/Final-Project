@@ -12,6 +12,7 @@ const Cryptocurrencies = ({
   useEffect(() => {
     setAmountCryptocurrencies(100);
   }, [amountCryptocurrencies]);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   return (
     <div className="cryptocurrencies-container">
@@ -43,7 +44,7 @@ const Cryptocurrencies = ({
                 </p>
               ))}
             </div>
-            <div className="column">
+            <div className="column" id="change-column">
               <p className="span-p">Change (24h)</p>
               {data.slice(0, amountCryptocurrencies).map((elem, index) => (
                 <div key={index} className="coin-change">
@@ -75,7 +76,7 @@ const Cryptocurrencies = ({
                 </p>
               ))}
             </div>
-            <div className="column">
+            <div className="column" id="market-cup-column">
               <p className="span-p">Market Cup</p>
               {data.slice(0, amountCryptocurrencies).map((elem, index) => (
                 <p key={index} className="coin-market-cup">

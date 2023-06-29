@@ -76,3 +76,20 @@
   margin-top: 2rem;
   margin-right: 0.5rem;
 }
+
+@media only screen and (max-width: 678px) {
+  #market-cup-column {
+    display: none;
+  }
+  #change-column {
+    display: none;
+  }
+
+  .cryptocurrencies-container{
+    padding: 20rem 5rem;
+  }
+
+  .cryptocurrencies-container div {
+    width: 100%;
+  }
+}

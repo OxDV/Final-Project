@@ -243,3 +243,49 @@
     color: $red-color;
     font-size: 1.5rem;
 }
+
+
+@media only screen and (max-width: 678px) {
+    .section1-content-container{
+        width: 90%;
+    }
+
+    .part-with-exchange div {
+        width: 100%;
+    }
+
+    .current-coin-container {
+        
+        align-items: center;
+        gap:  5%;
+        margin-top: 4rem;
+        flex-wrap: wrap;
+    }
+
+
+    .current-coin-info {
+        width: 20rem;
+margin-bottom: 2rem;
+    }
+
+    .current-coin-container {
+        justify-content: start;
+    }
+
+    .main-text h1 {
+        width: 100%;
+    }
+
+    .main-text p {
+        width: 100%;
+    }
+
+    .exchange-menu {
+        width: 100%;
+    }
+
+    .image-mobile-container {
+        display: none;
+    }
+
+}

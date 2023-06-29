@@ -154,3 +154,9 @@
 .inputBox input:valid {
     border-bottom: 2px solid $blue-color;
 }
+
+@media only screen and (max-width: 678px) {
+    .sing-up-container {
+        padding-top: 30rem;
+    }
+}

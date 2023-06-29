@@ -24,3 +24,13 @@
     text-align: center;
     color: $light-blue;
 }
+
+@media screen {
+    .account-content-container {
+        width: 80%;
+    }
+
+    .account-container {
+        padding: 40rem 0;
+    }
+}
