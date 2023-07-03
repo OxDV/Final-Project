@@ -77,6 +77,9 @@ export default function Section1({ data }) {
         `Min. 1 ${data[optionSellSelected].symbol.toUpperCase()}`
       );
       setError(true);
+    } else if (inputSellValue < 0.1) {
+      setErrorMessage(`The quantity cannot be equal to zero. `);
+      setError(true);
     } else if (
       optionSellSelected === 3 &&
       optionBuySelected === 1 &&
@@ -84,6 +87,16 @@ export default function Section1({ data }) {
     ) {
       setErrorMessage(
         `Min. 0.1 ${data[optionSellSelected].symbol.toUpperCase()}`
+      );
+      setError(true);
+    } else if (
+      optionSellSelected === 2 ||
+      (optionSellSelected === 4 &&
+        optionBuySelected === 6 &&
+        inputSellValue < 50)
+    ) {
+      setErrorMessage(
+        `Min. 50 ${data[optionSellSelected].symbol.toUpperCase()}`
       );
       setError(true);
     } else {
@@ -158,9 +171,13 @@ export default function Section1({ data }) {
               <div className="choice-of-cryptocurrencies">
                 <div className="sell-part">
                   <h3>Sell</h3>
-                  <div className="sell-choose-container">
+                  <div
+                    className={`sell-choose-container ${
+                      isSellListActive ? "active" : ""
+                    } `}
+                  >
                     <div className="buy-coin">
-                      <div className="current-buy-coin">
+                      <div className="current-buy-coin" onClick={closeSellList}>
                         {data && (
                           <>
                             <img src={data[optionSellSelected].image} alt="" />
@@ -171,7 +188,7 @@ export default function Section1({ data }) {
                                 className="open-buy-list"
                               />
                             ) : (
-                              <FaAngleUp onClick={closeSellList} />
+                              <FaAngleUp />
                             )}
                           </>
                         )}
@@ -179,19 +196,22 @@ export default function Section1({ data }) {
                       {isSellListActive && (
                         <ul className="list-buy-container">
                           {data ? (
-                            data.slice(0, 5).map((elem, index) => (
-                              <li
-                                className="list-buy-coin"
-                                key={index}
-                                onClick={() => handleOptionSellSelect(index)}
-                              >
-                                <img src={elem.image} alt="" />
-                                {elem.name}
-                                <div className="list-buy-min-amount">
-                                  <p>1 {elem.symbol.toUpperCase()}</p>
-                                </div>
-                              </li>
-                            ))
+                            data.slice(0, 10).map((elem, index) =>
+                              index != optionBuySelected &&
+                              index != optionSellSelected ? (
+                                <li
+                                  className="list-buy-coin"
+                                  key={index}
+                                  onClick={() => handleOptionSellSelect(index)}
+                                >
+                                  <img src={elem.image} alt="" />
+                                  {elem.name}
+                                  <div className="list-buy-min-amount">
+                                    <p>1 {elem.symbol.toUpperCase()}</p>
+                                  </div>
+                                </li>
+                              ) : null
+                            )
                           ) : (
                             <p>Loading</p>
                           )}
@@ -218,9 +238,13 @@ export default function Section1({ data }) {
 
                 <div className="buy-part">
                   <h3>Buy</h3>
-                  <div className="buy-choose-container">
+                  <div
+                    className={`buy-choose-container ${
+                      isBuyListActive ? "active" : ""
+                    }`}
+                  >
                     <div className="buy-coin">
-                      <div className="current-buy-coin">
+                      <div className="current-buy-coin" onClick={closeBuyList}>
                         {data && (
                           <>
                             <img src={data[optionBuySelected].image} alt="" />
@@ -231,7 +255,7 @@ export default function Section1({ data }) {
                                 className="open-buy-list"
                               />
                             ) : (
-                              <FaAngleUp onClick={closeBuyList} />
+                              <FaAngleUp />
                             )}
                           </>
                         )}
@@ -239,19 +263,22 @@ export default function Section1({ data }) {
                       {isBuyListActive && (
                         <ul className="list-buy-container">
                           {data ? (
-                            data.slice(0, 5).map((elem, index) => (
-                              <li
-                                className="list-buy-coin"
-                                key={index}
-                                onClick={() => handleOptionBuySelect(index)}
-                              >
-                                <img src={elem.image} alt="" />
-                                {elem.name}
-                                <div className="list-buy-min-amount">
-                                  <p>1 {elem.symbol.toUpperCase()}</p>
-                                </div>
-                              </li>
-                            ))
+                            data.slice(0, 10).map((elem, index) =>
+                              index != optionBuySelected &&
+                              index != optionSellSelected ? (
+                                <li
+                                  className="list-buy-coin"
+                                  key={index}
+                                  onClick={() => handleOptionBuySelect(index)}
+                                >
+                                  <img src={elem.image} alt="" />
+                                  {elem.name}
+                                  <div className="list-buy-min-amount">
+                                    <p>1 {elem.symbol.toUpperCase()}</p>
+                                  </div>
+                                </li>
+                              ) : null
+                            )
                           ) : (
                             <p>Loading</p>
                           )}

@@ -74,9 +74,15 @@
     position: relative;
 }
 
+.sell-choose-container.active,
+.buy-choose-container.active {
+    border-radius: 1rem 1rem 0 0;
+}
+
 .list-buy-container {
+    background-color: $dark-purple;
     width: 32.5rem;
-    height: 35rem;
+    // height: 35rem;
     position: absolute;
     top: 6.8rem;
     border: 1px solid $white-color;
@@ -84,6 +90,8 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    z-index: 500;
+    left: -1px;
 }
 
 
@@ -124,6 +132,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .current-buy-coin img {

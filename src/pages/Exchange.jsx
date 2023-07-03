@@ -16,6 +16,7 @@ export default function Exchange({ coinData, isLogin, currentUser }) {
   const [transactionNumber, setTransactionNumber] = useState("");
   const [receiveCryptoWallet, setReceiveCryptoWallet] = useState("");
   const [confirmTransaction, setConfirmTransaction] = useState(false);
+  const [error, setError] = useState("");
 
   let commission = 0;
   let totalSend = 0;
@@ -32,19 +33,23 @@ export default function Exchange({ coinData, isLogin, currentUser }) {
   }, [transactionNumber]);
 
   async function updateBuyValue(event) {
-    event.preventDefault();
-    try {
-      await addDoc(collection(db, "transaction"), {
-        transactionNumber: transactionNumber,
-        receiveCryptoWallet: receiveCryptoWallet,
-        transaction: `${sellValue} ${coinData[
-          sellCrypto
-        ].symbol.toUpperCase()} to ${buyValue.toLocaleString()}
+    if (!receiveCryptoWallet || !transactionNumber) {
+      setError("Please fill in all fields");
+    } else {
+      event.preventDefault();
+      try {
+        await addDoc(collection(db, "transaction"), {
+          transactionNumber: transactionNumber,
+          receiveCryptoWallet: receiveCryptoWallet,
+          transaction: `${sellValue} ${coinData[
+            sellCrypto
+          ].symbol.toUpperCase()} to ${buyValue.toLocaleString()}
         ${coinData[buyCrypto].symbol.toUpperCase()} Сommission: ${commission}`,
-      });
-      setConfirmTransaction(true);
-    } catch (e) {
-      console.error("Error adding document: ", e);
+        });
+        setConfirmTransaction(true);
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
     }
   }
 
@@ -133,6 +138,7 @@ export default function Exchange({ coinData, isLogin, currentUser }) {
                   >
                     Confirm Transaction
                   </button>
+                  <p className="exchange-error">{error}</p>
                 </form>
               </div>
             </div>
