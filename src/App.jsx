@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { ref, onValue } from "firebase/database";
 import database from "./FirebaseData"; // Import the 'database' object
-// import { TonConnectUIProvider } from '@tonconnect/ui-react';
+import { TonConnectUIProvider } from '@tonconnect/ui-react';
 
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import Header from "./components/Header";
@@ -77,7 +77,7 @@ function App() {
   }, [coinData]);
 
   return (
-    // <TonConnectUIProvider manifestUrl={manifestUrl}>
+    <TonConnectUIProvider manifestUrl="https://<YOUR_APP_URL>/tonconnect-manifest.json">
       <BrowserRouter>
         <div className="app">
           <Header isLogin={isLogin} setIsLogin={setIsLogin} />
@@ -121,7 +121,7 @@ function App() {
           <Footer />
         </div>
       </BrowserRouter>
-  //  </TonConnectUIProvider>
+      </TonConnectUIProvider>
   );
 }
 

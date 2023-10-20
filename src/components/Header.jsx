@@ -5,6 +5,7 @@ import { auth } from "../FirebaseData";
 import { signOut } from "firebase/auth";
 import SwitchTheme from "./SwitchTheme/SwitchTheme";
 import { FaBars } from "react-icons/fa";
+import { TonConnectButton } from "@tonconnect/ui-react";
 export default function Header({ isLogin, setIsLogin }) {
   const [toogleActive, setToogleActive] = useState(false);
   function toogleMenu() {
@@ -28,6 +29,7 @@ export default function Header({ isLogin, setIsLogin }) {
             <img src="./images/logo2.png" alt="" />
           </Link>
         </div>
+        <TonConnectButton/>
 
         <div className="menuToogle" onClick={toogleMenu}>
           <FaBars />
