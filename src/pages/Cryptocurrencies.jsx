@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FaCaretUp, FaCaretDown } from "react-icons/fa";
 import "../styles/pages/cryptocurrencies.scss";
 import Loader from "../components/Loader";
-import database from "../Firebase";
+import database from "../FirebaseData";
 
 const Cryptocurrencies = ({
   data,

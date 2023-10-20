@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "../styles/components/header.scss";
 import { NavLink, Link } from "react-router-dom";
-import { auth } from "../Firebase";
+import { auth } from "../FirebaseData";
 import { signOut } from "firebase/auth";
+import SwitchTheme from "./SwitchTheme/SwitchTheme";
 import { FaBars } from "react-icons/fa";
-
 export default function Header({ isLogin, setIsLogin }) {
   const [toogleActive, setToogleActive] = useState(false);
   function toogleMenu() {
@@ -116,6 +116,7 @@ export default function Header({ isLogin, setIsLogin }) {
               </ul>
             )}
           </div>
+          <SwitchTheme/>
         </div>
       </div>
     </div>

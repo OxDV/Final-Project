@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/pages/Account.scss";
-import { auth } from "../firebase";
+import { auth } from "../FirebaseData";
 
 export default function Account({ isLogin }) {
   const navigate = useNavigate();

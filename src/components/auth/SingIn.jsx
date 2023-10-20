@@ -3,7 +3,7 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import React, { useEffect, useState } from "react";
-import { auth } from "../../Firebase";
+import { auth } from "../../FirebaseData";
 import "../../styles/components/signIn.scss";
 import { Link, useNavigate } from "react-router-dom";
 

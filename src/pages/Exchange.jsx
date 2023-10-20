@@ -3,7 +3,7 @@ import "../styles/pages/exchange.scss";
 import { useNavigate } from "react-router-dom";
 import Loader from "../components/Loader";
 import { collection, addDoc } from "firebase/firestore";
-import { db } from "../Firebase";
+import { db } from "../FirebaseData";
 import { useEffect } from "react";
 import { useState } from "react";
 import Congratulation from "../components/Congratulation";
