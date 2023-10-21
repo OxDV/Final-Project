@@ -22,7 +22,10 @@ export default function Header({ isLogin, setIsLogin }) {
       });
   };
 
-  const [theme, setTheme] = useState(localStorage.getItem('theme'));
+  const localTheme = localStorage.getItem('theme');
+
+  const [theme, setTheme] = useState(localTheme ? localTheme : 'dark');
+
 
   return (
     <div className="header-container">
