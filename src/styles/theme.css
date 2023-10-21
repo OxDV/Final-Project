@@ -32,6 +32,12 @@
     --footer-color-dark: #02001F;
     --footer-color-light: #f3f3f3;
 
+    --border-shadow-dark: 0 0 50px var(--blue-color);
+    --border-shadow-light: 0 0 0px #ffffff;
+
+    --border-dark: 1px solid var(--dark-purple);
+    --border-light: 1px solid #f2f2f2;
+
     --bg-color: var(--bg-color-dark);
     --blue-color: var(--blue-color-dark);
     --white-color: var(--white-color-dark);
@@ -43,4 +49,6 @@
     --green-color: var(--green-color-dark);
     --gray-color: var(--gray-color-dark);
     --footer-color: var(--footer-color-dark);
+    --border-shadow: var(--border-shadow-dark);
+    --border: var(--border-dark);
 }

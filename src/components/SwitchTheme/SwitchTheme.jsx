@@ -25,6 +25,8 @@ export default function SwitchTheme() {
         const greenColor = `var(--green-color-${theme})`
         const grayColor = `var(--gray-color-${theme})`
         const footerColor = `var(--footer-color-${theme})`
+        const borderShadow = `var(--border-shadow-${theme})`
+        const border = `var(--border-${theme})`
         
         document.body.style.setProperty('--bg-color', backgroundColor)
         document.body.style.setProperty('--blue-color', blueColor)
@@ -37,6 +39,8 @@ export default function SwitchTheme() {
         document.body.style.setProperty('--green-color', greenColor)
         document.body.style.setProperty('--gray-color', grayColor)
         document.body.style.setProperty('--footer-color', footerColor)
+        document.body.style.setProperty('--border-shadow', borderShadow)
+        document.body.style.setProperty('--border', border)
     }, [theme])
 
     return (

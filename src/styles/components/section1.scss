@@ -43,7 +43,7 @@
     height: 28rem;
     background-color: $dark-purple;
     padding: 3rem;
-    border: 0.5px solid $light-blue;
+    border: $border;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -69,7 +69,7 @@
 .buy-choose-container {
     width: 32.5rem;
     height: 7rem;
-    border: 1px solid $white-color;
+    border: $border;
     border-radius: 1rem;
     display: flex;
     position: relative;
@@ -183,7 +183,7 @@
 .buy-amount {
     width: 16.25rem;
     height: 6.8rem;
-    border-left: 1px solid;
+    border-left: $border;
     display: flex;
 }
 
@@ -205,7 +205,7 @@
     background: $gradient;
     padding: 2.1rem 5.5rem;
     border-radius: 1rem;
-    box-shadow: 0 0 10px $blue-color;
+    box-shadow: $border-shadow;
     background-size: 200%;
     transition: 0.5s;
     border: none;
@@ -240,6 +240,7 @@
     width: 22rem;
     height: 6rem;
     background-color: $dark-purple;
+    border: $border;
 }
 
 .current-coin-info img {

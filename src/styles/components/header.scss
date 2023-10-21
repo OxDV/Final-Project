@@ -78,7 +78,7 @@
     margin-right: 2rem;
     border-radius: 1rem;
     transition: 0.5s ease;
-    box-shadow: 0 0 1rem $blue-color;
+    box-shadow: $border-shadow;
 }
 
 .login-link:hover,
@@ -94,7 +94,7 @@
     background: $gradient;
     padding: 0.8rem 3.8rem;
     border-radius: 1rem;
-    box-shadow: 0 0 10px $blue-color;
+    box-shadow: $border-shadow;
     background-size: 200%;
     transition: 0.5s;
 }
