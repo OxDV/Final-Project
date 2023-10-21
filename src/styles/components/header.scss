@@ -36,7 +36,7 @@
 }
 
 .header-navigation {
-   display: flex;
+    display: flex;
 }
 
 .header-links ul li,
@@ -89,7 +89,7 @@
 }
 
 .register-link {
-    color: $white-color;
+    color: white;
     font-size: 2rem;
     background: $gradient;
     padding: 0.8rem 3.8rem;
@@ -114,37 +114,41 @@
         position: fixed;
         z-index: 999;
     }
+
     .header-context-container {
         width: 100%;
     }
-    .logo{
+
+    .logo {
         padding: 0 2rem;
     }
+
     .logo img {
         width: 100%;
         height: 100%;
     }
+
     .header-navigation {
         display: none;
-     }
+    }
 
 
- 
 
-     .menuToogle {
+
+    .menuToogle {
         display: block;
         color: $white-color;
         width: 5rem;
         height: 5rem;
         margin-right: 2rem;
-     }
+    }
 
-     .menuToogle svg {
+    .menuToogle svg {
         width: 100%;
         height: 100%;
-     }
+    }
 
-     .nav-mobile-links {
+    .nav-mobile-links {
         display: block;
         background-color: $white-color;
         background-color: $bg-color;
@@ -155,21 +159,21 @@
         right: 2%;
         margin-top: 80%;
         z-index: 999;
-        
-     }
 
-     .nav-mobile-links ul li {
+    }
+
+    .nav-mobile-links ul li {
         // padding: 3rem 5rem;
         // text-align: end;
         display: flex;
-        
-     }
 
-     .nav-mobile-links ul li a {
-        
-            padding: 3rem 5rem;
-            width: 100%;
-            height: 100%;
-        
-     }
+    }
+
+    .nav-mobile-links ul li a {
+
+        padding: 3rem 5rem;
+        width: 100%;
+        height: 100%;
+
+    }
 }

@@ -6,7 +6,7 @@
     display: flex;
     justify-content: center;
     padding: 8rem 0;
-    color: white;
+    color: $white-color;
     padding: 13rem 0;
 
 }
@@ -30,6 +30,7 @@
     flex-direction: column;
     text-align: center;
     padding: 5rem 3rem;
+
     form {
         width: 100%;
         height: 100%;
@@ -73,8 +74,8 @@
     bottom: 5%;
 }
 
-@media only  screen and (max-width: 678px) {
-    .exchange-container{
+@media only screen and (max-width: 678px) {
+    .exchange-container {
         padding: 30rem 0;
     }
 }

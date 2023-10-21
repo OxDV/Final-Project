@@ -15,7 +15,28 @@ export default function SwitchTheme() {
 
     useEffect(() => {
         const backgroundColor = `var(--bg-color-${theme})`
+        const blueColor = `var(--blue-color-${theme})`
+        const whiteColor = `var(--white-color-${theme})`
+        const blackColor = `var(--black-color-${theme})`
+        const gradient = `var(--gradient-${theme})`
+        const lightBlue = `var(--light-blue-${theme})`
+        const darkPurple = `var(--dark-purple-${theme})`
+        const redColor = `var(--red-color-${theme})`
+        const greenColor = `var(--green-color-${theme})`
+        const grayColor = `var(--gray-color-${theme})`
+        const footerColor = `var(--footer-color-${theme})`
+        
         document.body.style.setProperty('--bg-color', backgroundColor)
+        document.body.style.setProperty('--blue-color', blueColor)
+        document.body.style.setProperty('--white-color', whiteColor)
+        document.body.style.setProperty('--black-color', blackColor)
+        document.body.style.setProperty('--gradient', gradient)
+        document.body.style.setProperty('--light-blue', lightBlue)
+        document.body.style.setProperty('--dark-purple', darkPurple)
+        document.body.style.setProperty('--red-color', redColor)
+        document.body.style.setProperty('--green-color', greenColor)
+        document.body.style.setProperty('--gray-color', grayColor)
+        document.body.style.setProperty('--footer-color', footerColor)
     }, [theme])
 
     return (

@@ -12,26 +12,26 @@
     padding: 18rem 0;
 }
 
-.sing-up-field {
-    
-}
+.sing-up-field {}
 
 
-#btc-bg { 
+#btc-bg {
     width: 21rem;
     height: 22rem;
     position: absolute;
     bottom: -10rem;
     left: -15rem;
-    
+
 }
-#tz-bg { 
+
+#tz-bg {
     width: 41rem;
     height: 46rem;
     position: absolute;
     right: -30rem;
 }
-#doge-bg { 
+
+#doge-bg {
     width: 26rem;
     height: 23rem;
     position: absolute;
@@ -115,14 +115,14 @@
     border-bottom: 2px solid $white-color;
     outline: none;
     font-size: 2rem;
-    color: white;
+    color: $white-color;
     transition: 0.5s ease;
 }
 
 .inputBox label {
     position: absolute;
     left: 0;
-    color: white;
+    color: $white-color;
     padding: 1rem 0;
     font-size: 2rem;
     pointer-events: none;
@@ -132,8 +132,8 @@
 
 
 
-.inputBox input:focus ~ label,
-.inputBox input:valid ~ label {
+.inputBox input:focus~label,
+.inputBox input:valid~label {
     color: $blue-color;
     transform: translateY(-25px);
 }
@@ -145,16 +145,19 @@
 
 
 @media only screen and (max-width:678px) {
-    #btc-bg { 
+    #btc-bg {
         display: none;
     }
-    #tz-bg { 
+
+    #tz-bg {
         display: none;
     }
-    #doge-bg { 
+
+    #doge-bg {
         display: none;
     }
-    .sing-in-container{
+
+    .sing-in-container {
         padding-top: 30rem;
     }
 }
