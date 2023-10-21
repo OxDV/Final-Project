@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/components/header.scss";
 import { NavLink, Link } from "react-router-dom";
 import { auth } from "../FirebaseData";
@@ -7,6 +7,7 @@ import SwitchTheme from "./SwitchTheme/SwitchTheme";
 import { FaBars } from "react-icons/fa";
 import { TonConnectButton } from "@tonconnect/ui-react";
 export default function Header({ isLogin, setIsLogin }) {
+  const authorizationWallet = true;
   const [toogleActive, setToogleActive] = useState(false);
   function toogleMenu() {
     setToogleActive(!toogleActive);
@@ -21,22 +22,30 @@ export default function Header({ isLogin, setIsLogin }) {
       });
   };
 
+  const localTheme = localStorage.getItem('theme');
+
+  const [theme, setTheme] = useState(localTheme ? localTheme : 'dark');
+
+
   return (
     <div className="header-container">
       <div className="header-context-container">
         <div className="logo">
           <Link to="/">
-            <img src="./images/logo2.png" alt="" />
+            {theme === 'light'
+              ? <img src="./images/logo2lightTheme.png" alt="" />
+              : <img src="./images/logo2.png" alt="" />
+            }
           </Link>
         </div>
-        <TonConnectButton/>
-
         <div className="menuToogle" onClick={toogleMenu}>
           <FaBars />
         </div>
 
+
         {toogleActive ? (
           <div className="nav-mobile-links">
+
             <ul onClick={toogleMenu}>
               <li>
                 <Link to="/">Home</Link>
@@ -50,12 +59,19 @@ export default function Header({ isLogin, setIsLogin }) {
               <li>
                 <Link to="/contacts">Contacts</Link>
               </li>
-              <li>
-                <Link to="/login">Login</Link>
-              </li>
-              <li>
-                <Link to="/register">Register</Link>
-              </li>
+              {authorizationWallet ? (
+                null
+              ) : (<>
+                <li>
+                  <Link to="/login">Login</Link>
+                </li>
+                <li>
+                  <Link to="/register">Register</Link>
+                </li>
+              </>)}
+
+
+
             </ul>
           </div>
         ) : null}
@@ -85,40 +101,46 @@ export default function Header({ isLogin, setIsLogin }) {
             </ul>
           </div>
 
-          <div className="authorization-buttons">
-            {isLogin ? (
-              <ul>
-                <li>
-                  <NavLink className="login-link" to="/account">
-                    Account
-                  </NavLink>
-                </li>
-                <li>
-                  <Link
-                    className="register-link"
-                    to="/"
-                    onClick={handleSignOut}
-                  >
-                    Sign Out
-                  </Link>
-                </li>
-              </ul>
-            ) : (
-              <ul>
-                <li>
-                  <NavLink className="login-link" to="/login">
-                    Log In
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink className="register-link" to="/register">
-                    Register
-                  </NavLink>
-                </li>
-              </ul>
-            )}
-          </div>
-          <SwitchTheme/>
+          {authorizationWallet ? (
+            <ul className="authorization-buttons">
+              <li><TonConnectButton /></li>
+            </ul>
+          ) : (
+            <div className="authorization-buttons">
+              {isLogin ? (
+                <ul>
+                  <li>
+                    <NavLink className="login-link" to="/account">
+                      Account
+                    </NavLink>
+                  </li>
+                  <li>
+                    <Link
+                      className="register-link"
+                      to="/"
+                      onClick={handleSignOut}
+                    >
+                      Sign Out
+                    </Link>
+                  </li>
+                </ul>
+              ) : (
+                <ul>
+                  <li>
+                    <NavLink className="login-link" to="/login">
+                      Log In
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink className="register-link" to="/register">
+                      Register
+                    </NavLink>
+                  </li>
+                </ul>
+              )}
+            </div>
+          )}
+          <SwitchTheme theme={theme} setTheme={setTheme} />
         </div>
       </div>
     </div>
