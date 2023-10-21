@@ -5,15 +5,14 @@ import "./SwitchTheme.css";
 import { useEffect } from "react";
 
 export default function SwitchTheme() {
-
-    const [theme, setTheme] = useState('dark'); 
+    const [theme, setTheme] = useState(localStorage.getItem('theme')); 
 
     const toggleTheme = () => {
         setTheme(theme === 'dark' ? 'light' : 'dark');
-        console.log(theme);
     };
 
     useEffect(() => {
+        localStorage.setItem('theme', theme);
         const backgroundColor = `var(--bg-color-${theme})`
         const blueColor = `var(--blue-color-${theme})`
         const whiteColor = `var(--white-color-${theme})`
