@@ -30,13 +30,14 @@ export default function Header({ isLogin, setIsLogin }) {
             <img src="./images/logo2.png" alt="" />
           </Link>
         </div>
-
         <div className="menuToogle" onClick={toogleMenu}>
           <FaBars />
         </div>
 
+
         {toogleActive ? (
           <div className="nav-mobile-links">
+
             <ul onClick={toogleMenu}>
               <li>
                 <Link to="/">Home</Link>
@@ -50,12 +51,19 @@ export default function Header({ isLogin, setIsLogin }) {
               <li>
                 <Link to="/contacts">Contacts</Link>
               </li>
-              <li>
-                <Link to="/login">Login</Link>
-              </li>
-              <li>
-                <Link to="/register">Register</Link>
-              </li>
+              {authorizationWallet ? (
+                null
+              ) : (<>
+                <li>
+                  <Link to="/login">Login</Link>
+                </li>
+                <li>
+                  <Link to="/register">Register</Link>
+                </li>
+              </>)}
+
+
+
             </ul>
           </div>
         ) : null}
