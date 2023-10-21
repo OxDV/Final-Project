@@ -39,6 +39,12 @@
     display: flex;
 }
 
+.header-links,
+.theme-icon {
+    align-items: center;
+    display: flex;
+}
+
 .header-links ul li,
 .authorization-buttons ul li {
     display: inline-block;
@@ -103,6 +109,27 @@
 .register-link.active {
     background-position: right;
 }
+
+.go3974562317 {
+    color: white;
+    font-size: 2rem;
+    background: $gradient;
+    padding: 0.8rem 3.8rem;
+    border-radius: 1rem;
+    box-shadow: $border-shadow;
+    background-size: 200%;
+    transition: 0.5s;
+}
+
+.go3974562317:hover,
+.go3974562317.active {
+    background-position: right;
+}
+
+.go1392445990 {
+    background-color: #0e0f31;
+}
+
 
 @media only screen and (max-width: 678px) {
     .header-container {

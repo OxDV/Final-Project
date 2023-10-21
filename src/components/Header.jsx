@@ -7,6 +7,7 @@ import SwitchTheme from "./SwitchTheme/SwitchTheme";
 import { FaBars } from "react-icons/fa";
 import { TonConnectButton } from "@tonconnect/ui-react";
 export default function Header({ isLogin, setIsLogin }) {
+  const authorizationWallet = true;
   const [toogleActive, setToogleActive] = useState(false);
   function toogleMenu() {
     setToogleActive(!toogleActive);
@@ -29,7 +30,6 @@ export default function Header({ isLogin, setIsLogin }) {
             <img src="./images/logo2.png" alt="" />
           </Link>
         </div>
-        <TonConnectButton/>
 
         <div className="menuToogle" onClick={toogleMenu}>
           <FaBars />
@@ -85,40 +85,46 @@ export default function Header({ isLogin, setIsLogin }) {
             </ul>
           </div>
 
-          <div className="authorization-buttons">
-            {isLogin ? (
-              <ul>
-                <li>
-                  <NavLink className="login-link" to="/account">
-                    Account
-                  </NavLink>
-                </li>
-                <li>
-                  <Link
-                    className="register-link"
-                    to="/"
-                    onClick={handleSignOut}
-                  >
-                    Sign Out
-                  </Link>
-                </li>
-              </ul>
-            ) : (
-              <ul>
-                <li>
-                  <NavLink className="login-link" to="/login">
-                    Log In
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink className="register-link" to="/register">
-                    Register
-                  </NavLink>
-                </li>
-              </ul>
-            )}
-          </div>
-          <SwitchTheme/>
+          {authorizationWallet ? (
+            <ul className="authorization-buttons">
+              <li><TonConnectButton /></li>
+            </ul>
+          ) : (
+            <div className="authorization-buttons">
+              {isLogin ? (
+                <ul>
+                  <li>
+                    <NavLink className="login-link" to="/account">
+                      Account
+                    </NavLink>
+                  </li>
+                  <li>
+                    <Link
+                      className="register-link"
+                      to="/"
+                      onClick={handleSignOut}
+                    >
+                      Sign Out
+                    </Link>
+                  </li>
+                </ul>
+              ) : (
+                <ul>
+                  <li>
+                    <NavLink className="login-link" to="/login">
+                      Log In
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink className="register-link" to="/register">
+                      Register
+                    </NavLink>
+                  </li>
+                </ul>
+              )}
+            </div>
+          )}
+          <SwitchTheme />
         </div>
       </div>
     </div>
