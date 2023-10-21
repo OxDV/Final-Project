@@ -25,6 +25,7 @@ export default function SwitchTheme({ theme, setTheme }) {
         const footerColor = `var(--footer-color-${theme})`
         const borderShadow = `var(--border-shadow-${theme})`
         const border = `var(--border-${theme})`
+        const borderCurrentInfo = `var(--border-coin-info-${theme})`
 
         document.body.style.setProperty('--bg-color', backgroundColor)
         document.body.style.setProperty('--blue-color', blueColor)
@@ -39,6 +40,7 @@ export default function SwitchTheme({ theme, setTheme }) {
         document.body.style.setProperty('--footer-color', footerColor)
         document.body.style.setProperty('--border-shadow', borderShadow)
         document.body.style.setProperty('--border', border)
+        document.body.style.setProperty('--border-coin-info', borderCurrentInfo)
     }, [theme])
 
     return (

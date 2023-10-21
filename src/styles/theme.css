@@ -38,6 +38,9 @@
     --border-dark: 1px solid #f2f2f2;
     --border-light: 1px solid #d4d4d4;
 
+    --border-coin-info-dark: none;
+    --border-coin-info-light: 1px solid #d4d4d4;
+
     --bg-color: var(--bg-color-dark);
     --blue-color: var(--blue-color-dark);
     --white-color: var(--white-color-dark);
@@ -51,4 +54,5 @@
     --footer-color: var(--footer-color-dark);
     --border-shadow: var(--border-shadow-dark);
     --border: var(--border-dark);
+    --border-coin-info: var(--border-coin-info-dark);
 }

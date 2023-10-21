@@ -37,7 +37,7 @@ export default function WhyUs() {
             </div>
           </div>
           <div className="why-us-images">
-            <img className="circle-bg" src="./images/circle-bg.svg" alt="" />
+            <img className="circle-bg" src="./images/circle-bg.png" alt="" />
 
             <div className="image-container-first">
               <div className="square-first">
