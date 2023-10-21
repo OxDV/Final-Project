@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/components/header.scss";
 import { NavLink, Link } from "react-router-dom";
 import { auth } from "../FirebaseData";
@@ -22,12 +22,17 @@ export default function Header({ isLogin, setIsLogin }) {
       });
   };
 
+  const [theme, setTheme] = useState(localStorage.getItem('theme'));
+
   return (
     <div className="header-container">
       <div className="header-context-container">
         <div className="logo">
           <Link to="/">
-            <img src="./images/logo2.png" alt="" />
+            {theme === 'light'
+              ? <img src="./images/logo2lightTheme.png" alt="" />
+              : <img src="./images/logo2.png" alt="" />
+            }
           </Link>
         </div>
         <div className="menuToogle" onClick={toogleMenu}>
@@ -132,7 +137,7 @@ export default function Header({ isLogin, setIsLogin }) {
               )}
             </div>
           )}
-          <SwitchTheme />
+          <SwitchTheme theme={theme} setTheme={setTheme} />
         </div>
       </div>
     </div>
