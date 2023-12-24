@@ -7,7 +7,7 @@
     display: flex;
     justify-content: center;
     padding: 18rem 0;
-
+    height: 100vh;
 }
 
 .account-content-container {
@@ -25,12 +25,18 @@
     color: $light-blue;
 }
 
+.ant-input {
+    background-color: $bg-color;
+    color: $white-color;
+    &::placeholder {
+        color: $white-color;
+    }
+} 
+
 @media screen {
     .account-content-container {
         width: 80%;
     }
 
-    .account-container {
-        padding: 40rem 0;
-    }
+
 }
