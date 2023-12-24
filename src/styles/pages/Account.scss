@@ -7,7 +7,7 @@
     display: flex;
     justify-content: center;
     padding: 18rem 0;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .account-content-container {
@@ -33,9 +33,27 @@
     }
 } 
 
+.ant-pagination-item {
+    background-color: $bg-color !important;
+    a {
+        color: $white-color!important;
+    }
+}
+
+.ant-pagination-item-link {
+    color: $white-color !important;
+}
+
+.ant-btn {
+    background-color: $bg-color;
+    svg {
+        color: $white-color;
+    }
+}
+
 @media screen {
     .account-content-container {
-        width: 80%;
+        width: 70%;
     }
 
 
