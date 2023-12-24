@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/pages/Account.scss";
 import { auth } from "../FirebaseData";
 import { useState } from "react";
-import { Input } from "antd";
+import { Input, Button } from "antd";
 import { ConfigProvider, Table } from "antd";
 
 const { Search } = Input;
@@ -12,7 +12,9 @@ const columns = [
     title: "Transaction Hash",
     dataIndex: "transaction_hash",
     key: "transaction_hash",
-    render: (text) => <a>{text}</a>,
+    render: (text) => (
+      <a href={`https://etherscan.io/tx/${text}`} target="_blank" rel="noopener noreferrer">{text}</a>
+    )
   },
   {
     title: "Method",
@@ -58,8 +60,8 @@ export default function Account({ isLogin }) {
   const navigate = useNavigate();
   const apiKey = "WTAXHN5Z58NVDAEEK9Z3PKYYH349KYNE2G";
   const [balance, setBalance] = useState("");
-  const addressFromLocalStorage = localStorage.getItem("address");
-  const [address, setAddress] = useState(addressFromLocalStorage);
+  const [enterWallet, setEnterWallet] = useState(false);
+  const [address, setAddress] = useState("");
   const [transactions, setTransaction] = useState([]);
   useEffect(() => {
     if (!isLogin) {
@@ -95,7 +97,7 @@ export default function Account({ isLogin }) {
             const gasPrice = item.gasPrice / 1e18;
             const methodName = methodNames[item.methodId] || item.methodId;
             return {
-              transaction_hash: shortenAddress(item.hash),
+              transaction_hash: item.hash,
               method: methodName,
               age: formatTimestamp(item.timeStamp),
               timeStamp: parseInt(item.timeStamp),
@@ -129,15 +131,29 @@ export default function Account({ isLogin }) {
     setAddress(event.target.value);
   }
 
-  function handleGetBalance(event) {
-    localStorage.setItem("address", address);
+  function handleGetBalance(address) {
     getBalance(address);
     getTransactions(address);
   }
 
-  useState(() => {
-    handleGetBalance();
-  });
+  function disconectWallet() {
+    setAddress("");
+    setTransaction([]);
+    setBalance("")
+    setEnterWallet(false)
+  }
+
+  const onConnect = () => {
+    setEnterWallet(false);
+    if (window.ethereum){ 
+      window.ethereum.request({method: "eth_requestAccounts"}).then((account) => {
+        setAddress(account[0]);
+        handleGetBalance(account[0]);
+      })
+    } else {
+      alert("Please install Metamask")
+    }
+  }
 
   return (
     <div className="account-container">
@@ -151,6 +167,9 @@ export default function Account({ isLogin }) {
               headerColor: "var(--white-color)",
               rowHoverBg: "#82828240",
             },
+            Button: {
+              colorText: "var(--white-color)",
+            },
           },
         }}
       >
@@ -159,11 +178,20 @@ export default function Account({ isLogin }) {
             <h1 className="title-account">
               Welcome, {auth.currentUser ? auth.currentUser.email : null}!
             </h1>
-            <Search
-              placeholder="Enter your ETH address"
-              onChange={handleAddressChange}
-              onSearch={handleGetBalance}
-            />
+            {!balance ? (
+              <div id="connect-wallet-buttons">
+                {enterWallet ? (<Search
+                  placeholder="Enter your ETH address"
+                  onChange={handleAddressChange}
+                  onSearch={handleGetBalance}
+                  style={{ width: 400 }}
+                />) : <Button onClick={() => setEnterWallet(true)}>Enter Wallet</Button>}
+                <Button onClick={onConnect}>Connect Wallet</Button>
+              </div>
+            ) : (
+              <Button onClick={disconectWallet}>Disconnect Wallet</Button>
+            )}
+
             {balance && <h3>Your Balance: {balance} ETH</h3>}
             {balance && (
               <>

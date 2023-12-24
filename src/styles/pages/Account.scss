@@ -51,6 +51,12 @@
     }
 }
 
+#connect-wallet-buttons{
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+}
+
 @media screen {
     .account-content-container {
         width: 70%;
