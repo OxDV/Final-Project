@@ -2,6 +2,7 @@
 
 
 .sing-up-container {
+    animation: sing-up-container 2s;
     width: 100%;
     height: 100%;
     display: flex;
@@ -10,7 +11,15 @@
     background-color: $bg-color;
     flex-direction: column;
     padding: 18rem 0;
+}
 
+@keyframes sing-up-container {
+    from {
+        opacity: 0;
+    } 
+    to {
+        opacity: 1;
+    }
 }
 
 .sing-up-field {

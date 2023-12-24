@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { ref, onValue } from "firebase/database";
 import database from "./FirebaseData"; // Import the 'database' object
-import { TonConnectUIProvider } from '@tonconnect/ui-react';
 
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import Header from "./components/Header";
@@ -16,6 +15,7 @@ import axios from "axios";
 import Footer from "./components/Footer";
 import { auth } from "./FirebaseData";
 import Exchange from "./pages/Exchange";
+import Snowfall from "react-snowfall";
 
 function App() {
   const [data, setData] = useState({});
@@ -77,51 +77,58 @@ function App() {
   }, [coinData]);
 
   return (
-    <TonConnectUIProvider manifestUrl="https://<YOUR_APP_URL>/tonconnect-manifest.json">
-      <BrowserRouter>
-        <div className="app">
-          <Header isLogin={isLogin} setIsLogin={setIsLogin} />
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <Home
-                  data={coinData}
-                  amountCryptocurrencies={amountCryptocurrencies}
-                  setAmountCryptocurrencies={setAmountCryptocurrencies}
-                />
-              }
-            />
-            <Route path="/why_us" element={<WhyUs />} />
-            <Route
-              path="/cryptocurrencies"
-              element={
-                <Cryptocurrencies
-                  data={coinData}
-                  amountCryptocurrencies={amountCryptocurrencies}
-                  setAmountCryptocurrencies={setAmountCryptocurrencies}
-                />
-              }
-            />
-            <Route path="/contacts" element={<Contacts />} />
-            <Route
-              path="/login"
-              element={<Login setIsLogin={setIsLogin} isLogin={isLogin} />}
-            />
-            <Route
-              path="/register"
-              element={<Register setIsLogin={setIsLogin} isLogin={isLogin} />}
-            />
-            <Route path="/account" element={<Account isLogin={isLogin} />} />
-            <Route
-              path="/exchange"
-              element={<Exchange coinData={coinData} isLogin={isLogin} />}
-            />
-          </Routes>
-          <Footer />
-        </div>
-      </BrowserRouter>
-      </TonConnectUIProvider>
+    <BrowserRouter>
+      <Snowfall
+        style={{
+          position: "fixed",
+          width: "100vw",
+          height: "100vh",
+          zIndex: "10000",
+        }}
+        
+      />
+      <div className="app">
+        <Header isLogin={isLogin} setIsLogin={setIsLogin} />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Home
+                data={coinData}
+                amountCryptocurrencies={amountCryptocurrencies}
+                setAmountCryptocurrencies={setAmountCryptocurrencies}
+              />
+            }
+          />
+          <Route path="/why_us" element={<WhyUs />} />
+          <Route
+            path="/cryptocurrencies"
+            element={
+              <Cryptocurrencies
+                data={coinData}
+                amountCryptocurrencies={amountCryptocurrencies}
+                setAmountCryptocurrencies={setAmountCryptocurrencies}
+              />
+            }
+          />
+          <Route path="/contacts" element={<Contacts />} />
+          <Route
+            path="/login"
+            element={<Login setIsLogin={setIsLogin} isLogin={isLogin} />}
+          />
+          <Route
+            path="/register"
+            element={<Register setIsLogin={setIsLogin} isLogin={isLogin} />}
+          />
+          <Route path="/account" element={<Account isLogin={isLogin} />} />
+          <Route
+            path="/exchange"
+            element={<Exchange coinData={coinData} isLogin={isLogin} />}
+          />
+        </Routes>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 

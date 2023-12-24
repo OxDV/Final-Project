@@ -80,6 +80,7 @@
 }
 
 .map-container div {
+    animation: map-container 2s;
     border-radius: 3rem;
     overflow: hidden;
     width: 67rem;
@@ -87,6 +88,15 @@
     border: $border;
     box-shadow: $border-shadow;
     background-color: transparent;
+}
+
+@keyframes map-container {
+    from {
+        opacity: 0;
+    } 
+    to {
+        opacity: 1;
+    }
 }
 
 @media only screen and (max-width: 678px) {
