@@ -1,0 +1,11 @@
+@import '../variables.scss';
+
+.ant-modal-content {
+	background-color: $bg-color !important;
+	border: $border !important;
+}
+
+.ant-modal-title {
+	background-color: $bg-color !important;
+	color: $white-color !important;
+}
