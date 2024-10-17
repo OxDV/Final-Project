@@ -5,7 +5,9 @@ import { auth } from "../FirebaseData";
 import { signOut } from "firebase/auth";
 import SwitchTheme from "./SwitchTheme/SwitchTheme";
 import { FaBars } from "react-icons/fa";
-import { TonConnectButton } from "@tonconnect/ui-react";
+import { Button } from 'antd';
+import ConnectWallet from './ConnectWallet'
+
 export default function Header({ isLogin, setIsLogin }) {
   const authorizationWallet = true;
   const [toogleActive, setToogleActive] = useState(false);
@@ -103,7 +105,7 @@ export default function Header({ isLogin, setIsLogin }) {
 
           {authorizationWallet ? (
             <ul className="authorization-buttons">
-              <li><TonConnectButton /></li>
+              <li><ConnectWallet/></li>
             </ul>
           ) : (
             <div className="authorization-buttons">
